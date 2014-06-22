@@ -147,7 +147,7 @@ void converge(set< S_M_F >& s)
 				}
 			}
 			int n;
-			for (i = (*_i).second - 1, n = t.size() - 1; i > 0; --i) {	// 加入Set_More_Than集
+			for (int i = (*_i).second - 1, n = t.size() - 1; i > 0; --i) {	// 加入Set_More_Than集
 				v.clear();
 				combi(t, n, v);
 				for (int j = 0; j < v.size(); ) {
@@ -285,7 +285,7 @@ Point search_for_min_possible_rand_point(MineField& m)
 	}
 	// 如果该候补位置集合为空, 将不在雷区内边界上的未知格都加入候补集合
 	if (Set_Backup_Point.size() == 0) {
-		for (i = 1; i <= m.row; ++i) {
+		for (int i = 1; i <= m.row; ++i) {
 			for (int j = 1; j <= m.col; ++j) {
 				if (m.field[i][j].appear == MASKED && m.cnt_num_near(i, j) == 0)
 					Set_Backup_Point.insert(Point(i, j));
@@ -294,7 +294,7 @@ Point search_for_min_possible_rand_point(MineField& m)
 	}
 	// 如果候补位置集合仍然为空, 则将雷区内边界上的未知格加入集合
 	if (Set_Backup_Point.size() == 0) {
-		for (i = 1; i <= m.row; ++i) {
+		for (int i = 1; i <= m.row; ++i) {
 			for (int j = 1; j <= m.col; ++j) {
 				if (m.field[i][j].appear == MASKED)
 					Set_Backup_Point.insert(Point(i, j));
@@ -303,7 +303,7 @@ Point search_for_min_possible_rand_point(MineField& m)
 	}
 	int r = rand() % Set_Backup_Point.size();
 	set < Point > ::iterator _i = Set_Backup_Point.begin();
-	for (i = 0; i < r; ++i, ++_i);
+	for (int i = 0; i < r; ++i, ++_i);
 static int cnt = 0;
 cout << "进行第 " << ++cnt << " 次猜测  " << *_i << endl;
 	return *_i;		

@@ -43,7 +43,11 @@ ostream& operator << (ostream& oo, const I_S_M_F& s)
 	return oo;
 }													// 关键码为 int型的的位置
 int cnt_marked_near(const vector< int>& m, int i)
-{	// 方格i周围有几个未知格
+{
+    int k = 0;
+    int c = 0;
+
+    // 方格i周围有几个未知格
 	for (int k = 0, c = 0; k < 8; ++k) {
 		if (!is_range_in(i + offset[k], 0, m_row * m_col)) continue;
 		if (m[i + offset[k]] == MARKED) ++c;
@@ -185,7 +189,7 @@ void combination(const vector< int >& m, I_S_M_F& s, set< int >& Mine, set< int 
 				}
 			}
 			int n;
-			for (i = num - 1, n = sz - 1; i > 0; --i) {	// 加入Set_More_Than集
+			for (int i = num - 1, n = sz - 1; i > 0; --i) {	// 加入Set_More_Than集
 				v.clear();
 				combi(v, n, buff);
 				for (int j = 0; j < buff.size(); ) {
@@ -232,7 +236,10 @@ bool is_number(const vector< int >& m, int i)
 
 int cnt_masked_near(const vector< int >& m, int i)
 {
-	for (int k = 0, c = 0; k < 8; ++k) {
+    int k = 0;
+    int c = 0;
+
+	for (k = 0, c = 0; k < 8; ++k) {
 		if (!is_range_in(i + offset[k], 0, m_row * m_col)) continue;
 		if (m[i + offset[k]] == MASKED) ++c;
 	}
@@ -240,7 +247,10 @@ int cnt_masked_near(const vector< int >& m, int i)
 }
 int cnt_num_near(const vector< int >& m, int i)
 {
-	for (int k = 0, c = 0; k < 8; ++k) {
+    int k = 0;
+    int c = 0;
+
+	for (k = 0, c = 0; k < 8; ++k) {
 		if (!is_range_in(i + offset[k], 0, m_row * m_col)) continue;
 		if (is_number(m, i + offset[k])) ++c;
 	}
@@ -284,7 +294,7 @@ int search_for_min_possible_rand_point(const vector< int >& m)
 	int number = Map_Backup.count((Map_Backup.begin())->first);
 	int r = rand() % number;
 	multimap < double, int > ::iterator p = Map_Backup.begin();
-	for (i = 0; i < r; ++i, ++p) NULL;
+	for (int i = 0; i < r; ++i, ++p) NULL;
 	return p->second;
 }
 

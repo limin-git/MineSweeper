@@ -57,24 +57,36 @@ bool is_number(MineBox b)
 	return (1 <= b && b <= 8);
 }
 int cnt_masked_near(MineField& m, int x, int y) 
-{	// field[x][y]这个位置周围有几个未知格
-	for (int i = 0, c = 0; i < 8; ++i) {
+{
+    int i = 0;
+    int c = 0;
+
+    // field[x][y]这个位置周围有几个未知格
+	for (i = 0, c = 0; i < 8; ++i) {
 		if (m[x + OFFSET[i].getx()][y + OFFSET[i].gety()] == MASKED) ++c;
 	}
 	return c;
 }
 
 int cnt_num_near(MineField& m, int x, int y)
-{	// field[x][y]这个位置周围有几个未知格
-	for (int i = 0, c = 0; i < 8; ++i) {
+{
+    int i = 0;
+    int c = 0;
+
+    // field[x][y]这个位置周围有几个未知格
+	for (i = 0, c = 0; i < 8; ++i) {
 		if (is_number(m[x + OFFSET[i].getx()][y + OFFSET[i].gety()])) ++c;
 	}
 	return c;
 }
 
 int cnt_marked_near(MineField& m, int x, int y)
-{	// field[x][y]这个位置周围有几个未知格
-	for (int i = 0, c = 0; i < 8; ++i) {
+{
+    int i = 0;
+    int c = 0;
+
+    // field[x][y]这个位置周围有几个未知格
+	for (i = 0, c = 0; i < 8; ++i) {
 		if (m[x + OFFSET[i].getx()][y + OFFSET[i].gety()] == MARKED) ++c;
 	}
 	return c;
@@ -186,7 +198,7 @@ void converge(set< S_M_F >& s)
 				}
 			}
 			int n;
-			for (i = (*_i).second - 1, n = t.size() - 1; i > 0; --i) {	// 加入Set_More_Than集
+			for (int i = (*_i).second - 1, n = t.size() - 1; i > 0; --i) {	// 加入Set_More_Than集
 				v.clear();
 				combi(t, n, v);
 				for (int j = 0; j < v.size(); ) {
@@ -245,7 +257,7 @@ Point search_for_min_possible_rand_point(MineField& m)
 	int number = Map_Backup_Point.count((*Map_Backup_Point.begin()).first);
 	int r = rand() % number;
 	multimap < double, Point > ::iterator p = Map_Backup_Point.begin();
-	for (i = 0; i < r; ++i, ++p) NULL;
+	for (int i = 0; i < r; ++i, ++p) NULL;
 	return (*p).second;
 }
 
@@ -371,6 +383,6 @@ void main()
 		make_command_list(List_Of_Command, Set_Nomine, Set_Mine);
 
 		// 执行部分
-//		excute_the_command_list(m, List_Of_Command);
+		//excute_the_command_list(m, List_Of_Command);
 	}
 }

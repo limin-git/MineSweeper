@@ -243,7 +243,7 @@ show_array (BiIterator f, BiIterator m, BiIterator l)
 }
 
 template <class T>
-combi (vector< T >& vec, int n, vector< T >& des)
+void combi (vector< T >& vec, int n, vector< T >& des)
 {
 try {
 	do {

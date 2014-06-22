@@ -37,7 +37,8 @@ bool is_range_in(int i, int F, int L)
 	return (F <= i && i < L);
 }
 void create_mine_field(vector< int >& u)
-{	// u为用户看到的雷区, m 为雷区建造者看到的雷区
+{
+    // u为用户看到的雷区, m 为雷区建造者看到的雷区
 	int sz = m_row * m_col;
 	mf.resize(sz);
 	u.resize(sz);
@@ -60,7 +61,7 @@ void create_mine_field(vector< int >& u)
 		}
 	}
 	int cnt_mines;
-	for (i = 0; i < sz; ++i) {
+	for (int i = 0; i < sz; ++i) {
 		cnt_mines = 0;
 		if (mf[i] == MINE) continue;
 		for (k = 0; k < 8; k++) {

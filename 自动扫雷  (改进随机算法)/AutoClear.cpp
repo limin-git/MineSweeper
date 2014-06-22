@@ -143,7 +143,7 @@ void converge(set< S_M_F >& s)
 				}
 			}
 			int n;
-			for (i = (*_i).second - 1, n = t.size() - 1; i > 0; --i) {	// 加入Set_More_Than集
+			for (int i = (*_i).second - 1, n = t.size() - 1; i > 0; --i) {	// 加入Set_More_Than集
 				v.clear();
 				combi(t, n, v);
 				for (int j = 0; j < v.size(); ) {
@@ -266,7 +266,7 @@ Point search_for_min_possible_rand_point(MineField& m)
 	int number = Map_Backup_Point.count((*Map_Backup_Point.begin()).first);
 	int r = rand() % number;
 	multimap < double, Point > ::iterator p = Map_Backup_Point.begin();
-	for (i = 0; i < r; ++i, ++p) NULL;
+	for (int i = 0; i < r; ++i, ++p) NULL;
 	return (*p).second;
 }
 

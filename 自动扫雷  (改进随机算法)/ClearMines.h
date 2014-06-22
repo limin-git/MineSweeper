@@ -105,22 +105,34 @@ int MineField::col = 0;
 int MineField::num = 0;
 
 int MineField::cnt_masked_near(int x, int y) 
-{	// field[x][y]这个位置周围有几个未知格
-	for (int i = 0, c = 0; i < 8; ++i) {
+{
+    int i = 0;
+    int c = 0;
+
+    // field[x][y]这个位置周围有几个未知格
+	for (i = 0, c = 0; i < 8; ++i) {
 		if (field[x + OFFSET[i].getx()][y + OFFSET[i].gety()].appear == MASKED) ++c;
 	}
 	return c;
 }
 int MineField::cnt_num_near(int x, int y) 
-{	// field[x][y]这个位置周围有几个未知格
-	for (int i = 0, c = 0; i < 8; ++i) {
+{
+    int i = 0;
+    int c = 0;
+
+    // field[x][y]这个位置周围有几个未知格
+	for (i = 0, c = 0; i < 8; ++i) {
 		if (field[x + OFFSET[i].getx()][y + OFFSET[i].gety()].is_number()) ++c;
 	}
 	return c;
 }
 int MineField::cnt_marked_near(int x, int y) 
-{	// field[x][y]这个位置周围有几个未知格
-	for (int i = 0, c = 0; i < 8; ++i) {
+{
+    int i = 0;
+    int c = 0;
+
+    // field[x][y]这个位置周围有几个未知格
+	for (i = 0, c = 0; i < 8; ++i) {
 		if (field[x + OFFSET[i].getx()][y + OFFSET[i].gety()].appear == MARKED) ++c;
 	}
 	return c;
@@ -142,15 +154,15 @@ MineField::MineField(int _r, int _c, int _n)
 	for (int i = 0; i < row + 2; ++i)
 		field[i] = new MineBox[col + 2];
 	// 外围全部展开(因为OpenNear可能会将边界未展开的区域入栈)
-	for (i = 0; i < row + 2; i++) {
+	for (int i = 0; i < row + 2; i++) {
 		field[i][0].appear = field[i][col + 1].appear = BLANK; 
 	}
-	for (i = 0; i< col + 2; i++) {
+	for (int i = 0; i< col + 2; i++) {
 		field[0][i].appear = field[row + 1][i].appear = BLANK;
 	}
 	// 随机产生n个为mine
 	srand(time((time_t*)NULL));
-	for (i = 0; i < num; ) {
+	for (int i = 0; i < num; ) {
 		int j = rand() % row + 1; 
 		int k = rand() % col + 1;
 		if (field[j][k].real != MINE) { 
@@ -159,7 +171,7 @@ MineField::MineField(int _r, int _c, int _n)
 		}
 	}
 	// 计算四周mine的个数
-	for (i = 1; i <= row; i++) 
+	for (int i = 1; i <= row; i++) 
 		for (int j = 1; j <= col; j++)
 			if (field[i][j].real != MINE) {
 				int k = 0;
